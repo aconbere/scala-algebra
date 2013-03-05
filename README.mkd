@@ -1,0 +1,22 @@
+# Trying to make some semigroups
+
+I feel like I've gotten a step closer, but still not quite there.
+
+```scala
+
+import org.conbere.algebra.SemiGroup._
+
+object Algebra {
+  def main(args:Array[String]) = {
+    // this works great
+    val adder = optionSemiGroup[Int]
+    assert(Some(3) == adder(Some(1), Some(2)))
+
+    // this doesn't
+    // scala> Some(1) +| Some(2)
+    // <console>:11: error: could not find implicit value for parameter adder: org.conbere.algebra.SemiGroup[Some[Int]]
+    //               Some(1) +| Some(2)
+    Some(1) +| Some(2)
+  }
+}
+```
