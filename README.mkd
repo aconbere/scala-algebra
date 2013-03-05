@@ -20,3 +20,19 @@ object Algebra {
   }
 }
 ```
+
+So here's some examples
+
+```scala
+import org.conbere.algebra.SemiGroup._
+val adderInt = optionSemiGroup[Int]
+val adderString = optionSemiGroup[String]
+
+adderInt.add(Some(1), Some(2)) // Some(3)
+adderString.add(Some("a"), Some("b")) // Some("ab")
+
+// error: could not find implicit value for parameter adder: org.conbere.algebra.SemiGroup[(Int, Int)]
+// this is an expected error since there is no defined SemiGroup for (Int,Int)
+val adderTuple = optionSemiGroup[(Int,Int)]
+```
+
